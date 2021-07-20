@@ -148,7 +148,7 @@ class CreditCard extends Component {
                     clickable={this.props.clickable}
                     onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}
                     >
-                    <ImageBackground source={this.props.imageFront} imageStyle={this.props.frontImageStyle} style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontImageBgStyle]}>
+                    <ImageBackground source={this.props.imageFront} resizeMode='cover' imageStyle={this.props.frontImageStyle} style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontImageBgStyle]}>
                         {/* {this.props.imageFront ?
                             <Image source={this.props.imageFront} style={[styles.bgImage, {width: this.props.width, height: this.props.height},this.props.frontImageStyle]} />
                             : null} */}

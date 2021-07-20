@@ -8,7 +8,7 @@ declare module 'react-native-credit-card'
 } from 'react-native';
 
   export type CreditCardProps = {
-    number?: string;
+    number?: string | number;
     cvc?: string;
     name?: string;
     expiry?: string;
