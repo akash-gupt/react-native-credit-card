@@ -138,7 +138,7 @@ class CreditCard extends Component {
         return (
             <View style={cardStyle}>
                 <FlipCard
-                    style={[styles.container, {width: this.props.width, height: this.props.height, backgroundColor: this.props.bgColor}, this.props.style]}
+                    style={[styles.container, {width: this.props.width, height: this.props.height, backgroundColor: this.props.bgColor}, this.props.style,this.props.mainContainerStyle]}
                     friction={6}
                     perspective={1000}
                     flipHorizontal={true}
@@ -147,9 +147,9 @@ class CreditCard extends Component {
                     clickable={this.props.clickable}
                     onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}
                     >
-                    <View style={[styles.front, {width: this.props.width, height: this.props.height}]}>
+                    <View style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontStyle]}>
                         {this.props.imageFront ?
-                            <Image source={this.props.imageFront} style={[styles.bgImage, {width: this.props.width, height: this.props.height}]} />
+                            <Image source={this.props.imageFront} style={[styles.bgImage, {width: this.props.width, height: this.props.height},this.props.frontImageStyle]} />
                             : null}
                         <View style={styles.lower}>
                             {this.props.shiny ?
@@ -186,7 +186,7 @@ class CreditCard extends Component {
                             </View>
                         </View>
                     </View>
-                    <View style={[styles.back, {width: this.props.width, height: this.props.height}]}>
+                    <View style={[styles.back, {width: this.props.width, height: this.props.height},this.props.backImageStyle]}>
                         {this.props.imageBack ?
                             <Image source={this.props.imageBack} style={[styles.bgImage, {width: this.props.width, height: this.props.height}]} />
                             : null}
