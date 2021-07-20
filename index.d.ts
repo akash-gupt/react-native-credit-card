@@ -30,6 +30,7 @@ declare module 'react-native-credit-card'
     backImageStyle?:StyleProp<ImageStyle>;
     imageFront?:ImageSourcePropType;
     imageBack?:ImageSourcePropType;
+    fullNameText?:string;
   }
 
   export default class TextField extends React.Component<CreditCardProps, any> {
