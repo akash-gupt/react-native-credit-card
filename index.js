@@ -149,9 +149,6 @@ class CreditCard extends Component {
                     onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}
                     >
                     <ImageBackground source={this.props.imageFront} resizeMode='cover' imageStyle={this.props.frontImageStyle} style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontImageBgStyle]}>
-                        {/* {this.props.imageFront ?
-                            <Image source={this.props.imageFront} style={[styles.bgImage, {width: this.props.width, height: this.props.height},this.props.frontImageStyle]} />
-                            : null} */}
                         <View style={styles.lower}>
                             {this.props.shiny ?
                                 <View style={styles.shinyFront} />
@@ -187,10 +184,7 @@ class CreditCard extends Component {
                             </View>
                         </View>
                     </ImageBackground>
-                    <View style={[styles.back, {width: this.props.width, height: this.props.height},this.props.backImageStyle]}>
-                        {this.props.imageBack ?
-                            <Image source={this.props.imageBack} style={[styles.bgImage, {width: this.props.width, height: this.props.height}]} />
-                            : null}
+                    <ImageBackground source={this.props.imageBack} imageStyle={this.props.backImageStyle} style={[styles.back, {width: this.props.width, height: this.props.height},this.props.backImageBgStyle]}>
                         {this.props.bar ?
                             <View style={styles.bar}/>
                             : null}
@@ -198,7 +192,7 @@ class CreditCard extends Component {
                         {this.props.shiny ?
                             <View style={styles.shinyBack} data-after={this.props.shinyAfterBack}/>
                             : null}
-                    </View>
+                    </ImageBackground>
                 </FlipCard>
             </View>
         );
