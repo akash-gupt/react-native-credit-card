@@ -3,7 +3,8 @@ declare module 'react-native-credit-card'
   import {
     StyleProp,
     ViewStyle,
-    ImageStyle
+    ImageStyle,
+    ImageSourcePropType
 } from 'react-native';
 
   export type CreditCardProps = {
@@ -14,7 +15,9 @@ declare module 'react-native-credit-card'
     focused?: string;
     expiryBefore?: string;
     expiryAfter?: string;
-    shinyAfterBack?: '',
+    shinyAfterBack?: string,
+    shiny?:boolean;
+    bar?:boolean;
     type?: string;
     width?: number;
     height?: number;
@@ -25,6 +28,8 @@ declare module 'react-native-credit-card'
     frontImageStyle?:StyleProp<ImageStyle>;
     backStyle?:StyleProp<ImageStyle>;
     backImageStyle?:StyleProp<ImageStyle>;
+    imageFront?:ImageSourcePropType;
+    imageBack?:ImageSourcePropType;
   }
 
   export default class TextField extends React.Component<CreditCardProps, any> {
