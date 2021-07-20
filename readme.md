@@ -28,11 +28,11 @@ I got the design resources from the [Ramakrishna V's dribbble](https://dribbble.
 
 #### Usage
 
-- `npm install --save react-native-credit-card`
+- `npm install --save react-native-credit-card-v2`
 - In your react native script add these lines
 
 ```jsx
-import CreditCard from 'react-native-credit-card';
+import CreditCard from 'react-native-credit-card-v2';
 
 
 <CreditCard

@@ -1,4 +1,4 @@
-declare module 'react-native-credit-card'
+declare module 'react-native-credit-card-v2'
 {
   import {
     StyleProp,
@@ -34,7 +34,7 @@ declare module 'react-native-credit-card'
     showExpiryAfterLabel?:boolean;
   }
 
-  export default class TextField extends React.Component<CreditCardProps, any> {
+  export default class CreditCard extends React.Component<CreditCardProps, any> {
 
   }
 
