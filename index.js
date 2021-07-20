@@ -15,7 +15,8 @@ import {
     Text,
     StyleSheet,
     Platform,
-    Image
+    Image,
+    ImageBackground
 } from 'react-native';
 const images = require('./card-images');
 const validate = Payment.fns;
@@ -147,10 +148,10 @@ class CreditCard extends Component {
                     clickable={this.props.clickable}
                     onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}
                     >
-                    <View style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontStyle]}>
-                        {this.props.imageFront ?
+                    <ImageBackground source={this.props.imageFront} imageStyle={this.props.frontImageStyle} style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontImageBgStyle]}>
+                        {/* {this.props.imageFront ?
                             <Image source={this.props.imageFront} style={[styles.bgImage, {width: this.props.width, height: this.props.height},this.props.frontImageStyle]} />
-                            : null}
+                            : null} */}
                         <View style={styles.lower}>
                             {this.props.shiny ?
                                 <View style={styles.shinyFront} />
@@ -185,7 +186,7 @@ class CreditCard extends Component {
                                 </View>
                             </View>
                         </View>
-                    </View>
+                    </ImageBackground>
                     <View style={[styles.back, {width: this.props.width, height: this.props.height},this.props.backImageStyle]}>
                         {this.props.imageBack ?
                             <Image source={this.props.imageBack} style={[styles.bgImage, {width: this.props.width, height: this.props.height}]} />

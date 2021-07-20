@@ -24,8 +24,8 @@ declare module 'react-native-credit-card'
     bgColor?: string;
     clickable?: boolean;
     mainContainerStyle?:StyleProp<ViewStyle>;
-    frontStyle?:StyleProp<ViewStyle>;
-    frontImageStyle?:StyleProp<ImageStyle>;
+    frontImageStyle?:StyleProp<ViewStyle>;
+    frontImageBgStyle?:StyleProp<ImageStyle>;
     backStyle?:StyleProp<ImageStyle>;
     backImageStyle?:StyleProp<ImageStyle>;
     imageFront?:ImageSourcePropType;
