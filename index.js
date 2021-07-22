@@ -26,7 +26,7 @@ class CreditCard extends Component {
         super(props);
         this.state = {
             type: {
-                name:"unknown",
+                name: "unknown",
                 length: 16
             }
         }
@@ -43,18 +43,18 @@ class CreditCard extends Component {
     updateType(props) {
 
         if (!props.number)
-            return this.setState({type: {name:"unknown", length: 16}});
+            return this.setState({ type: { name: "unknown", length: 16 } });
 
         var type = validate.cardType(props.number);
         if (type) {
             if (type === "amex") {
-                return this.setState({type: {name: type, length: 15}});
+                return this.setState({ type: { name: type, length: 15 } });
             } else {
-                return this.setState({type: {name: type, length: 16}});
+                return this.setState({ type: { name: type, length: 16 } });
             }
         }
 
-        return this.setState({type: {name: "unknown", length: 16}});
+        return this.setState({ type: { name: "unknown", length: 16 } });
     }
     number() {
         if (!this.props.number) {
@@ -77,7 +77,7 @@ class CreditCard extends Component {
 
             string = string.substring(0, space_index1) + " " + string.substring(space_index1, space_index2) + " " + string.substring(space_index2);
         } else {
-            const amountOfSpaces = Math.ceil(maxLength/4);
+            const amountOfSpaces = Math.ceil(maxLength / 4);
 
             for (var i = 1; i <= amountOfSpaces; i++) {
                 var space_index = (i * 4 + (i - 1));
@@ -128,7 +128,7 @@ class CreditCard extends Component {
 
     render() {
         const isAmex = this.state.type && this.state.type.name === "amex";
-        const cardStyle = [styles.container, {width: this.props.width, height: this.props.height, backgroundColor: this.props.bgColor}, this.props.style];
+        const cardStyle = [styles.container, { width: this.props.width, height: this.props.height, backgroundColor: this.props.bgColor }, this.props.style];
         const {
             showExpiryAfterLabel = true,
             showExpiryBeforeLabel = true,
@@ -139,23 +139,23 @@ class CreditCard extends Component {
         return (
             <View style={cardStyle}>
                 <FlipCard
-                    style={[styles.container, {width: this.props.width, height: this.props.height, backgroundColor: this.props.bgColor}, this.props.style,this.props.mainContainerStyle]}
+                    style={[styles.container, { width: this.props.width, height: this.props.height, backgroundColor: this.props.bgColor }, this.props.style, this.props.mainContainerStyle]}
                     friction={6}
                     perspective={1000}
                     flipHorizontal={true}
                     flipVertical={false}
                     flip={this.props.focused === 'cvc'}
                     clickable={this.props.clickable}
-                    onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}
-                    >
-                    <ImageBackground source={this.props.imageFront} resizeMode='cover' imageStyle={this.props.frontImageStyle} style={[styles.front, {width: this.props.width, height: this.props.height}, this.props.frontImageBgStyle]}>
+                    onFlipped={(isFlipped) => { console.log('isFlipped', isFlipped) }}
+                >
+                    <ImageBackground source={this.props.imageFront} resizeMode='cover' imageStyle={this.props.frontImageStyle} style={[styles.front, { width: this.props.width, height: this.props.height }, this.props.frontImageBgStyle]}>
                         <View style={styles.lower}>
                             {this.props.shiny ?
                                 <View style={styles.shinyFront} />
                                 : null}
                             <Image
-                                 style={styles.logo}
-                                 source={{uri: images[this.props.type ? this.props.type : this.state.type.name]}}
+                                style={styles.logo}
+                                source={this.props.cardTypeImages ? this.props.cardTypeImages[this.props.type ? this.props.type : this.state.type.name]  : { uri: images[this.props.type ? this.props.type : this.state.type.name] }}
                             />
                             {isAmex ?
                                 <View style={styles.cvcFront}>
@@ -175,7 +175,7 @@ class CreditCard extends Component {
                                         style={styles.expiry}
                                         data-before={this.props.expiryBefore}
                                         data-after={this.props.expiryAfter}>
-                                        {showExpiryBeforeLabel && 
+                                        {showExpiryBeforeLabel &&
                                             <Text style={styles.textSmall}>{expiryBeforeText || 'MONTH/YEAR'}</Text>
                                         }
                                         <Text style={styles.textExpiry}>{this.getValue("expiry")}</Text>
@@ -184,13 +184,13 @@ class CreditCard extends Component {
                             </View>
                         </View>
                     </ImageBackground>
-                    <ImageBackground source={this.props.imageBack} imageStyle={this.props.backImageStyle} style={[styles.back, {width: this.props.width, height: this.props.height},this.props.backImageBgStyle]}>
+                    <ImageBackground source={this.props.imageBack} imageStyle={this.props.backImageStyle} style={[styles.back, { width: this.props.width, height: this.props.height }, this.props.backImageBgStyle]}>
                         {this.props.bar ?
-                            <View style={styles.bar}/>
+                            <View style={styles.bar} />
                             : null}
                         <View style={styles.cvc}><Text style={styles.textCvc}>{this.getValue("cvc")}</Text></View>
                         {this.props.shiny ?
-                            <View style={styles.shinyBack} data-after={this.props.shinyAfterBack}/>
+                            <View style={styles.shinyBack} data-after={this.props.shinyAfterBack} />
                             : null}
                     </ImageBackground>
                 </FlipCard>

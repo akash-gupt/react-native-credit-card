@@ -5,7 +5,11 @@ declare module 'react-native-credit-card-v2'
     ViewStyle,
     ImageStyle,
     ImageSourcePropType
-} from 'react-native';
+  } from 'react-native';
+
+  export type CardTypeImage = {
+    name: string; image: ImageSourcePropType;
+  }
 
   export type CreditCardProps = {
     number?: string | number;
@@ -16,22 +20,23 @@ declare module 'react-native-credit-card-v2'
     expiryBefore?: string;
     expiryAfter?: string;
     shinyAfterBack?: string,
-    shiny?:boolean;
-    bar?:boolean;
+    shiny?: boolean;
+    bar?: boolean;
     type?: string;
     width?: number;
     height?: number;
     bgColor?: string;
     clickable?: boolean;
-    mainContainerStyle?:StyleProp<ViewStyle>;
-    frontImageStyle?:StyleProp<ViewStyle>;
-    frontImageBgStyle?:StyleProp<ImageStyle>;
-    backImageBgStyle?:StyleProp<ImageStyle>;
-    backImageStyle?:StyleProp<ImageStyle>;
-    imageFront?:ImageSourcePropType;
-    imageBack?:ImageSourcePropType;
-    fullNameText?:string;
-    showExpiryAfterLabel?:boolean;
+    mainContainerStyle?: StyleProp<ViewStyle>;
+    frontImageStyle?: StyleProp<ViewStyle>;
+    frontImageBgStyle?: StyleProp<ImageStyle>;
+    backImageBgStyle?: StyleProp<ImageStyle>;
+    backImageStyle?: StyleProp<ImageStyle>;
+    imageFront?: ImageSourcePropType;
+    imageBack?: ImageSourcePropType;
+    fullNameText?: string;
+    showExpiryAfterLabel?: boolean;
+    cardTypeImages?: CardTypeImage[];
   }
 
   export default class CreditCard extends React.Component<CreditCardProps, any> {
