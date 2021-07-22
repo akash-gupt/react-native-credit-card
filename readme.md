@@ -31,6 +31,93 @@ I got the design resources from the [Ramakrishna V's dribbble](https://dribbble.
 - `npm install --save react-native-credit-card-v2`
 - In your react native script add these lines
 
+
+```tsx
+import CheckerCC from 'card-validator';
+import React, {useMemo} from 'react';
+import CreditCard from 'react-native-credit-card-v2';
+
+export const Assets = {
+  card: {
+    amex: require('../assets/cards/amex.png'),
+    diners: require('../assets/cards/diners.png'),
+    discover: require('../assets/cards/discover.png'),
+    jcb: require('../assets/cards/jcb.png'),
+    maestro: require('../assets/cards/maestro.png'),
+    mastercard: require('../assets/cards/mastercard.png'),
+    visa: require('../assets/cards/visa.png'),
+    unionpay: require('../assets/cards/unionpay.png'),
+  },
+};
+
+type CardType = keyof typeof Assets['card'];
+
+type CardDetailType = {
+  cvv?: number | string;
+  cardNumber?: number | string;
+  expiryMonth?: number | string;
+  expiryYear?: number | string;
+  expiry?: string;
+  holderName?: string;
+};
+
+type ExampleProps = {
+  cardDetail?: CardDetailType;
+};
+
+const Example = (props: ExampleProps) => {
+  const {cardDetail} = props;
+
+  const cardType: CardType = useMemo(() => {
+    if (cardDetail?.cardNumber) {
+      const numberValidation = CheckerCC.number(cardDetail?.cardNumber);
+      return numberValidation.card?.type;
+    }
+
+    return '' as any;
+  }, [cardDetail]);
+
+  return (
+   
+      <CreditCard
+        imageFront={Assets.images.card1}
+        imageBack={Assets.images.card1}
+        shiny={false}
+        bar={false}
+        width={width(90)}
+        height={height(32)}
+        bgColor={DEFAULT_IMAGE_BG_COLOR}
+        mainContainerStyle={{
+          borderRadius: 10,
+        }}
+        frontImageStyle={{
+          borderRadius: 10,
+        }}
+        frontImageBgStyle={{
+          borderRadius: 10,
+        }}
+        backImageStyle={{
+          borderRadius: 10,
+        }}
+        backImageBgStyle={{
+          borderRadius: 10,
+        }}
+        name={cardDetail?.holderName}
+        number={cardDetail?.cardNumber}
+        type={cardType}
+        expiry={cardDetail?.expiry}
+        showExpiryAfterLabel={false}
+        cardTypeImages={Assets.card}
+      />
+    
+  );
+};
+
+export default Example;
+
+
+```
+
 ```jsx
 import CreditCard from 'react-native-credit-card-v2';
 
@@ -76,6 +163,12 @@ import CreditCard from 'react-native-credit-card-v2';
 -`showExpiryAfterLabel`: boolean(show the VALID THRU text)
 -`expiryBeforeText`: Change the default text for MONTH/YEAR
 -`expiryAfterText`: Change the default text for VALID THRU
+-`cardTypeImages`:  Change card type images
+-`mainContainerStyle`: Main Container Style
+-`frontImageStyle`: Front Image Style
+-`frontImageBgStyle`: Front Image  Bg Style (Used ImageBackground)
+-`backImageStyle`: Front Image Style
+-`backImageBgStyle`: Front Image  Bg Style (Used ImageBackground)
 
 #### Todo
 
